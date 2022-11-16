@@ -1,3 +1,18 @@
+require 'faker'
+
+puts "seeding database & deleting old entries"
+Restaurant.destroy_all
+categories = ["chinese", "italian", "japanese", "french", "belgian"]
+
+10.times do
+  Restaurant.create(
+    name: Faker::Games::Heroes.artifact,
+    address: Faker::Address.street_name,
+    phone_number: Faker::PhoneNumber.cell_phone_in_e164,
+    category: categories.sample
+  )
+end
+
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
 #
